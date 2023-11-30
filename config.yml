@@ -1,0 +1,38 @@
+# Project Configuration File
+# --------------------------
+
+dataset:
+    name: Loan-Risk-Optimizer
+    data_path: data/heloc.csv
+    feature_descriptions:
+        RiskPerformance: Paid as negotiated flag (12-36 months). String of Good and Bad
+        ExternalRiskEstimate: Consolidated version of risk markers
+        MSinceOldestTradeOpen: Months Since Oldest Trade Open
+        MSinceMostRecentTradeOpen: Months Since Most Recent Trade Open
+        AverageMInFile: Average Months in File
+        NumSatisfactoryTrades: Number of credit agreements with on-time payments
+        NumTrades60Ever2DerogPubRec: Number of trade lines 60 days past due date, includes derogatory public records
+        NumTrades90Ever2DerogPubRec: Number of trade lines 90 days past due date, includes derogatory public records
+        NumTotalTrades: Total number of credit accounts
+        NumTradesOpeninLast12M: Number of Trades Open in Last 12 Months
+        PercentTradesNeverDelq: Percent Trades Never Delinquent
+        MSinceMostRecentDelq: Months Since Most Recent Delinquency
+        MaxDelq2PublicRecLast12M: Maximum Delinquency/Public Records Last 12 Months
+        MaxDelqEver: Maximum Delinquency Ever
+        PercentInstallTrades: Percent Installment Trades
+        NetFractionInstallBurden: Net Fraction Installment Burden. Installment balance/original loan amount
+        NumInstallTradesWBalance: Number Installment Trades with Balance
+        MSinceMostRecentInqexcl7days: Months Since Most Recent Inquiry excluding 7 days
+        NumInqLast6M: Number of Inquiries in Last 6 Months
+        NumInqLast6Mexcl7days: Number of Inquiries in Last 6 Months excluding 7 days
+        NetFractionRevolvingBurden: Net Fraction Revolving Burden. Revolving balance/credit limit
+        NumRevolvingTradesWBalance: Number Revolving Trades with Balance
+        NumBank2NatlTradesWHighUtilization: Number of credit cards with balance ≥ 75% of its limit
+        PercentTradesWBalance: Percent Trades with Balance
+
+outputs:
+    path: ./outputs
+
+modeling_params:
+    batch_size: 32
+    epochs: 100
