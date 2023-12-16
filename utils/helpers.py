@@ -2,7 +2,7 @@ import os
 import yaml
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score, auc, classification_report, confusion_matrix, roc_curve
-import seaborn as sns
+
 
 def load_config():
     """
@@ -21,20 +21,23 @@ def load_config():
     return config
 
 # Evaluation function that prints classification report and confusion matrix
-def evaluate(y_test, y_pred, model_name):
-    #print accuracy
-    print(f"Accuracy: {accuracy_score(y_test, y_pred):.2f}")
-    print()
+def evaluate(X_test, y_test, model):
+
+    #predict on validation set
+    y_pred = model.predict(X_test)
+
     cm = confusion_matrix(y_test, y_pred)
 
-    print(f"\033[34m{model_name}\033[0m")
-    print()
+    print(f"\033[34m{model.__class__.__name__}\033[0m")
+
     print(f" \033[32mClassification Report:\033[0m")
     print(classification_report(y_test, y_pred))
+
+    print(f" \033[32mAccuracy:\033[0m {accuracy_score(y_test, y_pred):.2f}")
+    print()
+
     print(f" \033[32mConfusion Matrix:\033[0m")
-    
-    sns.heatmap(cm, annot=True, cmap='Blues', fmt='g')
-    plt.title(f'{model_name}: Confusion Matrix')
-    plt.xlabel('Predicted Labels')
-    plt.ylabel('True Labels')
-    plt.show()
+    print(cm, flush=True)
+    print()
+ 
+
